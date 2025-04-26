@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+  word:
+    image: wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: rootpassword
+    depends_on:
+      - db
+    volumes:
+      - wordpress_data:/var/www/html
+    restart: always
+
+volumes:
+  db_data:
+  wordpress_data:
