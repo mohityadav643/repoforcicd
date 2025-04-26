@@ -7,7 +7,8 @@ pipeline
         {
             steps
             {
-                git 'https://github.com/mohityadav643/repoforcicd.git',branch: 'master'
+               git url: 'https://github.com/mohityadav643/repoforcicd.git', branch: 'master'
+
             }
         }
         stage('build and deploy')
